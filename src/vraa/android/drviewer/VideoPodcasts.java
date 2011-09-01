@@ -11,10 +11,13 @@ import vraa.android.drviewer.util.UIUtils;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -24,6 +27,10 @@ import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class VideoPodcasts extends Activity {
+	private int refetch = Menu.FIRST;
+	private int home = Menu.FIRST + 1;
+	private int group1Id = 1;
+
 	protected static final int MESSAGE_SUCCESS = 0;
 	protected static final int MESSAGE_NO_SHOWS = 1;
 	private Handler videoPodCastsLookUpHandler;
@@ -47,8 +54,7 @@ public class VideoPodcasts extends Activity {
 
 		videoPodcastsShowsList.setAdapter(searchAdapter);
 
-        pdVideoPodcastShows = ProgressDialog.show(this, "One moment...", "Scraping DR video podcasts", true, false);
-		getVideoPodcastShows(videoPodCastsLookUpHandler.obtainMessage());
+		getVideoPodcastShows(videoPodCastsLookUpHandler.obtainMessage(), false);
     }
 
     private void findAllViewsById() {
@@ -83,12 +89,13 @@ public class VideoPodcasts extends Activity {
 		});
 	}
 	
-	public void getVideoPodcastShows(final Message message) {
+	public void getVideoPodcastShows(final Message message, final boolean refetch) {
+        pdVideoPodcastShows = ProgressDialog.show(this, "One moment...", "Scraping DR video podcasts", true, false);
 		Thread thread = new Thread() {
 			@Override
 			public void run() {
 				List<VideoPodcastShow> videoPodcastShows = CacheHelper.readFile(context, _videoPodcastShowsFileName);
-				if (videoPodcastShows == null){ videoPodcastShows = Scraper.getVideoPodcastShows(); }
+				if (videoPodcastShows == null || refetch){ videoPodcastShows = Scraper.getVideoPodcastShows(); }
 				if (videoPodcastShows != null && videoPodcastShows.size() > 0){
 					message.what = MESSAGE_SUCCESS;
 					message.obj = videoPodcastShows;
@@ -100,6 +107,29 @@ public class VideoPodcasts extends Activity {
 			}
 		};
 		thread.start();
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		menu.add(group1Id, refetch, refetch, "Refecth");
+		menu.add(group1Id, home, home, "Home");
+		return super.onCreateOptionsMenu(menu);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle item selection
+	    switch (item.getItemId()) {
+	    case 1:
+			getVideoPodcastShows(videoPodCastsLookUpHandler.obtainMessage(), true);
+	        return true;
+	    case 2:
+	    	final Intent intent = new Intent(context, Main.class);
+	    	context.startActivity(intent);
+	        return true;
+	    default:
+	        return super.onOptionsItemSelected(item);
+	    }
 	}
 
 	private void localize(){

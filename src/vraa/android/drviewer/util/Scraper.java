@@ -41,7 +41,7 @@ public class Scraper {
 		List<PodcastShow> podcastShows = new ArrayList<PodcastShow>();
 		try {
 			for (String url : drPodcastUrl) {
-				Document doc = Jsoup.connect(url).get();
+				Document doc = Jsoup.connect(url).timeout(60000).get();
 				Elements shows = doc.select("p.icExternal a[title=xml]").parents().get(7).select("div.content");
 				for (Element show : shows) {
 					PodcastShow vodcastShow = new PodcastShow();
