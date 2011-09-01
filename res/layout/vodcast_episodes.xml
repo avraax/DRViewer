@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:background="#FFFFFF">
+	<ImageView android:id="@+id/vodCastShowImage"
+		android:layout_gravity="center" android:layout_marginLeft="2dip"
+		android:layout_marginRight="6dip" android:layout_width="match_parent" android:layout_height="300px"/>
+	<ListView android:layout_width="fill_parent" android:id="@+id/searchListView"
+		android:layout_height="fill_parent" android:layout_below="@+id/vodCastShowImage"
+		android:background="#FFFFFF" android:choiceMode="singleChoice"
+		android:clickable="true" android:dividerHeight="1px" android:divider="#C0C0C0"
+		android:drawSelectorOnTop="false" android:cacheColorHint="#FFFFFF"
+		android:footerDividersEnabled="false">
+	</ListView>
+</RelativeLayout>

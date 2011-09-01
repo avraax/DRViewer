@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="vraa.android.drviewer"
+      android:versionCode="1"
+      android:versionName="1.0">
+    <uses-sdk android:minSdkVersion="8" />
+
+    <application android:label="@string/app_name">
+        <activity android:name=".Main"
+                  android:label="@string/app_name" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="TabHolder" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.TABHOLDER" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="VideoPodcasts" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.TabVodcasts" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="Podcasts" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.TABPODCASTS" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="VideoPodcastEpisodes" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.VODCASTEPISODES" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="PodcastEpisodes" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.CASTEPISODES" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+</manifest>

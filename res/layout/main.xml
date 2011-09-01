@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="match_parent">
+	<LinearLayout android:orientation="horizontal"
+		android:paddingTop="40dip" android:layout_height="wrap_content"
+		android:layout_width="match_parent" android:gravity="center">
+		<TextView android:text="DR Viewer" android:id="@+id/textView1"
+			android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="40sp" android:textStyle="bold"></TextView>
+	</LinearLayout>
+	<LinearLayout android:orientation="horizontal"
+		android:paddingTop="35dip" android:layout_height="wrap_content"
+		android:layout_width="match_parent" android:gravity="center">
+		<Button android:layout_height="60dip" android:textSize="20sp"
+			android:layout_width="260dip" android:text="Podcasts" android:id="@+id/podcastsButton"></Button>
+	</LinearLayout>
+	<LinearLayout android:orientation="horizontal"
+		android:paddingTop="30dip" android:layout_height="wrap_content"
+		android:layout_width="match_parent" android:gravity="center">
+		<Button android:layout_height="60dip" android:textSize="20sp"
+			android:layout_width="260dip" android:text="Video podcasts" android:id="@+id/videoPodcastsButton"></Button>
+	</LinearLayout>
+	<LinearLayout android:orientation="horizontal"
+		android:paddingTop="30dip" android:layout_height="wrap_content"
+		android:layout_width="match_parent" android:gravity="center">
+		<Button android:layout_height="60dip" android:textSize="20sp"
+			android:layout_width="260dip" android:text="Live TV" android:id="@+id/liveTvButton"></Button>
+	</LinearLayout>
+	<LinearLayout android:orientation="horizontal"
+		android:paddingTop="30dip" android:layout_height="wrap_content"
+		android:layout_width="match_parent" android:gravity="center">
+		<Button android:layout_height="60dip" android:textSize="20sp"
+			android:layout_width="260dip" android:text="Radio" android:id="@+id/radioButton"></Button>
+	</LinearLayout>
+</LinearLayout>
